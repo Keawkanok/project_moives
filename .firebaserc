@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "mymovie-6fc38": {
+      "hosting": {
+        "app": [
+          "mymovie-6fc38"
+        ]
+      }
+    }
+  }
+}

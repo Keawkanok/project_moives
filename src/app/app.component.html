@@ -1,0 +1,39 @@
+<ion-app>
+  <ion-menu menuId="main-menu" content-id="main">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>
+          Menu
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+
+        <ion-menu-toggle>
+          <ion-item routerLink="profile">
+            <!-- <ion-icon name="chatbubble-ellipses" slot="start"></ion-icon> -->
+            <img slot="start" src="https://img.icons8.com/ios-glyphs/24/000000/administrator-male.png" />
+            <ion-label>Profile</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item routerLink="chat">
+            <ion-icon name="chatbubble-ellipses" slot="start"></ion-icon>
+            <ion-label>Chat Group</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item>
+            <ion-icon name="log-out-outline" slot="start"></ion-icon>
+            <ion-label fill="clear"  type="submit" (click)="signOut()">Logout</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-app>

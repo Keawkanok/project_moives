@@ -1,0 +1,38 @@
+<ion-header >
+  <ion-toolbar>
+    <!-- <ion-buttons slot="start">
+      <ion-button>
+        Profile
+      </ion-button>
+    </ion-buttons> -->
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <!-- <ion-icon slot="icon-only" src="../../assets/checkmark-filled.svg"></ion-icon> -->
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true" slot="fixed">
+  <div class="card">
+    <div class="header">
+      <div class="avatar">
+        <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" alt="">
+      </div>
+    </div>
+    <div class="card-body" >
+      <div class="user-meta ion-text-center">
+        <h3 class="playername">{{ this.users }}</h3>
+        <h5 class="country">{{ this.users }}</h5>
+        <!-- <h6 class="ranking">Current ranking: <ion-chip>
+            <ion-label>2</ion-label>
+          </ion-chip>
+        </h6> -->
+      </div>
+    </div>
+  </div>
+</ion-content>
