@@ -6,20 +6,27 @@ import {
   redirectLoggedInTo,
 } from '@angular/fire/auth-guard';
 
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['/']);
+// const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login
 
-const redirectLoggedInToChat = () => redirectLoggedInTo(['/chat']);
+// const redirectLoggedInToChat = () => redirectLoggedInTo(['/chat']);
+// const redirectLoggedInToMovies = () => redirectLoggedInTo(['/moives']);
+
 
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+  },
+  {
+    path: 'login',
     loadChildren: () =>
       import('./pages/login/login.module').then((m) => m.LoginPageModule),
-    ...canActivate(redirectLoggedInToChat),
+    // ...canActivate(redirectLoggedInToMovies),
   },
   {
     path: 'chat',
-    ...canActivate(redirectUnauthorizedToLogin),
+    // ...canActivate(redirectUnauthorizedToLogin),
     loadChildren: () =>
       import('./pages/chat/chat.module').then((m) => m.ChatPageModule),
   },
@@ -32,7 +39,7 @@ const routes: Routes = [
   },
   {
     path: 'movies',
-    ...canActivate(redirectUnauthorizedToLogin),
+    // ...canActivate(redirectUnauthorizedToLogin),
     loadChildren: () =>
       import('./pages/movie/movie.module').then((m) => m.MoviePageModule),
   },
@@ -45,10 +52,19 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    ...canActivate(redirectUnauthorizedToLogin),
-
+    // ...canActivate(redirectUnauthorizedToLogin),
     loadChildren: () =>
       import('./pages/profile/profile.module').then((m) => m.ProfilePageModule),
+  },
+  {
+    path: 'login/register',
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule),
+    // ...canActivate(redirectUnauthorizedToLogin),
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule),
+    // ...canActivate(redirectUnauthorizedToLogin),
   },
 ];
 

@@ -1,18 +1,18 @@
 import { ChatService } from '../../services/chat.service';
 import { Validators } from '@angular/forms';
-import { LoadingController } from '@ionic/angular';
-import { AlertController } from '@ionic/angular';
-import { Router } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+import { LoadingController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-register',
+  templateUrl: './register.page.html',
+  styleUrls: ['./register.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class RegisterPage implements OnInit {
   credentialForm: FormGroup;
   constructor(
     private fb: FormBuilder,
@@ -28,16 +28,14 @@ export class LoginPage implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
-
-  async signIn() {
+  async signUp() {
     const loading = await this.loadingController.create();
     await loading.present();
-
-    this.chatService.signIn(this.credentialForm.value).then(
-      async (res) => {
+    this.chatService.signUp(this.credentialForm.value).then(
+      async (user) => {
         loading.dismiss();
         const alert = await this.alertController.create({
-          header: 'Please confirm your sign in again.',
+          header: 'Please confirm your sign up again.',
           buttons: ['OK'],
         });
         await alert.present();
@@ -47,7 +45,7 @@ export class LoginPage implements OnInit {
         loading.dismiss();
         const alert = await this.alertController.create({
           header: 'Please enter correct email and password',
-          message: err.message,
+          // message: err.message,
           buttons: ['OK'],
         });
 
@@ -55,27 +53,6 @@ export class LoginPage implements OnInit {
       }
     );
   }
-  // async signUp() {
-  //   const loading = await this.loadingController.create();
-  //   await loading.present();
-  //   this.chatService.signUp(this.credentialForm.value)
-  //     .then(
-  //       (user) => {
-  //         loading.dismiss();
-  //         this.router.navigateByUrl('/chat', { replaceUrl: true });
-  //       },
-  //       async (err) => {
-  //         loading.dismiss();
-  //         const alert = await this.alertController.create({
-  //           header: 'Sign up failed',
-  //           message: err.message,
-  //           buttons: ['OK'],
-  //         });
-
-  //         await alert.present();
-  //       }
-  //     );
-  // }
 
   get email() {
     return this.credentialForm.get('email');

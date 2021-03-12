@@ -12,7 +12,7 @@ export class AppComponent {
 
   signOut() {
     this.chatService.signOut().then(() => {
-      this.router.navigateByUrl('/', { replaceUrl: true });
+      this.router.navigateByUrl('login', { replaceUrl: true });
     });
   }
 
