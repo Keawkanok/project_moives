@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Config } from '@ionic/angular';
 
 export enum SearchType {
   all = '',
@@ -18,9 +19,9 @@ export class MovieService {
 
   constructor(private http: HttpClient) {}
 
-  searchData(title: string, type: SearchType): Observable<any> {
+  searchData(title: string, type: SearchType): Observable<HttpResponse<Config>> {
     return this.http
-      .get(
+      .get<Config>(
         `${this.url}?s=${encodeURI(title)}&type=${type}&apikey=${this.apiKey}`
       )
       .pipe(map((results) => results['Search']));
