@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { MoviePageRoutingModule } from './movie-routing.module';
 
 import { MoviePage } from './movie.page';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import { HttpClient } from '@angular/common/http';
     FormsModule,
     IonicModule,
     MoviePageRoutingModule,
-    HttpClient,
+    HttpClientModule,
   ],
   declarations: [MoviePage]
 })
